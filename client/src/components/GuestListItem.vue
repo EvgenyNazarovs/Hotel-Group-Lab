@@ -35,18 +35,13 @@ export default {
       .then(() => eventBus.$emit('guest-deleted', this.guest._id))
     },
     updateGuest(){
-      const updatedGuest = {
-        checkInStatus: null
-      }
-      this.changeStatus(updatedGuest)
+      const updatedGuest = { checkInStatus: null }
+      updatedGuest.checkInStatus = this.guest.checkInStatus === "Checked In" ? "Cancelled" : "Checked In"
       GuestsService.updateGuest(this.guest._id, updatedGuest)
       .then((guest) => eventBus.$emit('guest-updated', guest))
-    },
-    changeStatus(item){
-    this.guest.checkInStatus === "Checked In" ? item.checkInStatus = "Cancelled" : item.checkInStatus = "Checked In"
-        }
-      }
     }
+  }
+}
 
 
 </script>

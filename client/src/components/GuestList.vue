@@ -19,8 +19,10 @@ export default {
   name: 'GuestList',
   data(){
     return {
-      guests: []
-    };
+      guests: [],
+      filterOptions: ['Show All', 'Checked In', 'Cancelled'],
+      filter: 'Show All'
+    }
   },
   mounted(){
     GuestsService.getGuests()
@@ -39,6 +41,11 @@ export default {
       let index = this.guests.findIndex(guest => guest._id === updatedGuest._id)
       this.guests.splice(index, 1, updatedGuest)
     })
+  },
+  computed: {
+    filteredGuests(){
+
+    }
   },
   components: {
     GuestListItem
