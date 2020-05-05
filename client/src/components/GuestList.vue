@@ -42,11 +42,6 @@ export default {
       this.guests.splice(index, 1, updatedGuest)
     })
   },
-  computed: {
-    filteredGuests(){
-
-    }
-  },
   components: {
     GuestListItem
   }
